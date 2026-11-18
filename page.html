@@ -6,7 +6,7 @@
 <h1>#4471 · two problems, not one</h1>
 <p>Ticket #4471 holds <strong>412 unique reports</strong> (the export has 427 rows; 15 are repeats of the same id). They are not one bug. Grouped by tenant locale and booking form, they are two.</p>
 <div class="callout"><p>The queued fix covers problem 1 only. Problem 2 has no ticket of its own until now.</p></div>
-<h2>The three problems</h2>
+<h2>The two problems</h2>
 <table><thead><tr><th>#</th><th>Problem</th><th>Reports</th><th>Where</th></tr></thead><tbody>
 <tr><td>1</td><td>The shared parser reads dates month first; day-first tenants' dates flip</td><td>379</td><td>all 11 tenants</td></tr>
 <tr><td>2</td><td>The <code>booking-v3</code> form hints <code>MM/DD/YYYY</code> to day-first tenants, and reads their input day first</td><td>33</td><td>copper.studio, alder.physio, pale.harbour (form channel)</td></tr>

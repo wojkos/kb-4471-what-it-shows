@@ -20,7 +20,7 @@ id). They are not one bug. Grouped by tenant locale and booking form, they are t
 The queued fix covers problem 1 only. Problem 2 has no ticket of its own until now.
 </Callout>
 
-## The three problems
+## The two problems
 
 | # | Problem | Reports | Where |
 |---|---------|---------|-------|
