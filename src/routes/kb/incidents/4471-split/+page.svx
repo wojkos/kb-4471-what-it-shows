@@ -24,7 +24,7 @@ The queued fix covers problem 1 only. Problems 2 and 3 have no ticket of their o
 
 | # | Problem | Reports | Where |
 |---|---------|---------|-------|
-| 1 ([#1](https://github.com/wojkos/kb-4471-what-it-shows/issues/1)) | The shared parser reads dates month first; day-first tenants' dates flip | 379 | all 11 tenants |
+| 1 (stays #4471) | The shared parser reads dates month first; day-first tenants' dates flip | 379 | all 11 tenants |
 | 2 ([#2](https://github.com/wojkos/kb-4471-what-it-shows/issues/2)) | The `booking-v3` form hints `MM/DD/YYYY` to day-first tenants, and reads their input day first | 33 | copper.studio, alder.physio, pale.harbour (form channel) |
 | 3 ([#3](https://github.com/wojkos/kb-4471-what-it-shows/issues/3)) | Dates off by exactly one day (not a day/month flip), likely time zone or DST | 5 | R-41202, R-41209, R-41236, R-41344, R-41620 |
 
@@ -44,6 +44,6 @@ splits it; here nobody did for months.
 
 ## Tickets
 
-Issue #1 (parser, 379), issue #2 (hint, 33, the cause that had no ticket) and issue #3 (one-day move, 5, also counted in the 379), each split from #4471.
+Parser (379) stays with #4471. Issue #2 (hint, 33, the cause that had no ticket) and issue #3 (one-day move, 5, filed under the parser by tenant) are split from #4471.
 
 <RenderStamp {signature} />
