@@ -4,13 +4,13 @@ title: '#4471 · three problems, not one'
 owner: wojkos
 status: known
 reviewed: 2026-11-18
-signature: wojkos
+signature: v1.eyJzdWIiOiI1NjEzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTUwMzQ4NTQsImV4cCI6MTc5NTEyMTI1NH0.B19TYZJ2oxiFTql8fqykWtXpZSb6M61s-EGZF3mkeHY
 ---
 
 <script>
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
   import Callout from '#lib/kb/Callout.svelte';
-  const signature = 'wojkos';
+  const signature = 'v1.eyJzdWIiOiI1NjEzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTUwMzQ4NTQsImV4cCI6MTc5NTEyMTI1NH0.B19TYZJ2oxiFTql8fqykWtXpZSb6M61s-EGZF3mkeHY';
 </script>
 
 Ticket #4471 holds **412 unique reports** (the export has 427 rows; 15 are repeats of the same
