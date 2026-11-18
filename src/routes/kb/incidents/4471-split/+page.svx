@@ -1,0 +1,49 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: wojkos
+status: known
+reviewed: 2026-11-18
+signature: wojkos
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  const signature = 'wojkos';
+</script>
+
+Ticket #4471 holds **412 unique reports** (the export has 427 rows; 15 are repeats of the same
+id). They are not one bug. Grouped by tenant locale and booking form, they are three.
+
+<Callout>
+The queued fix covers problem 1 only. Problems 2 and 3 have no ticket of their own until now.
+</Callout>
+
+## The three problems
+
+| # | Problem | Reports | Where |
+|---|---------|---------|-------|
+| 1 | The shared parser reads dates month first; day-first tenants' dates flip | 374 | all 11 tenants |
+| 2 | The `booking-v3` form hints `MM/DD/YYYY` to day-first tenants, and reads their input day first | 33 | copper.studio, alder.physio, pale.harbour (form channel) |
+| 3 | Dates off by exactly one day (not a day/month flip), likely time zone or DST | 5 | R-41202, R-41209, R-41236, R-41344, R-41620 |
+
+374 + 33 + 5 = 412.
+
+## How the reports were told apart
+
+- The intake tag is a guess from the browser. It disagrees with the cause for 38 reports (23 tagged `hint` are really the parser; 15 tagged `parser` are really the hint). Do not triage by it.
+- The cause depends on the tenant: its locale, and which booking form it runs (`causes.ts`).
+- The 5 one-day reports were footnoted under the parser in `desk-notes.json`. A month flip cannot move a date by one day, so they are counted as their own problem here.
+
+## Why it was merged as one
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject line alone. Subjects like
+"Date is wrong" fit all three problems. "Splitting a ticket later is cheaper" holds only if someone
+splits it; here nobody did for months.
+
+## Tickets
+
+One GitHub issue per problem, each with its report count, in the repo this page ships with.
+
+<RenderStamp {signature} />
