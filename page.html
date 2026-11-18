@@ -8,9 +8,9 @@
 <div class="callout"><p>The queued fix covers problem 1 only. Problems 2 and 3 have no ticket of their own until now.</p></div>
 <h2>The three problems</h2>
 <table><thead><tr><th>#</th><th>Problem</th><th>Reports</th><th>Where</th></tr></thead><tbody>
-<tr><td>1</td><td>The shared parser reads dates month first; day-first tenants' dates flip</td><td>379</td><td>all 11 tenants</td></tr>
-<tr><td>2</td><td>The <code>booking-v3</code> form hints <code>MM/DD/YYYY</code> to day-first tenants, and reads their input day first</td><td>33</td><td>copper.studio, alder.physio, pale.harbour (form channel)</td></tr>
-<tr><td>3</td><td>Dates off by exactly one day (not a day/month flip), likely time zone or DST</td><td>5</td><td>R-41202, R-41209, R-41236, R-41344, R-41620</td></tr></tbody></table>
+<tr><td>1 (<a href="https://github.com/wojkos/kb-4471-what-it-shows/issues/1">#1</a>)</td><td>The shared parser reads dates month first; day-first tenants' dates flip</td><td>379</td><td>all 11 tenants</td></tr>
+<tr><td>2 (<a href="https://github.com/wojkos/kb-4471-what-it-shows/issues/2">#2</a>)</td><td>The <code>booking-v3</code> form hints <code>MM/DD/YYYY</code> to day-first tenants, and reads their input day first</td><td>33</td><td>copper.studio, alder.physio, pale.harbour (form channel)</td></tr>
+<tr><td>3 (<a href="https://github.com/wojkos/kb-4471-what-it-shows/issues/3">#3</a>)</td><td>Dates off by exactly one day (not a day/month flip), likely time zone or DST</td><td>5</td><td>R-41202, R-41209, R-41236, R-41344, R-41620</td></tr></tbody></table>
 <p>Counts are what the kb cause table shows: parser 379 and hint 33 add up to the 412 unique reports. The 5 one-day reports are the cause table's footnote: the desk files them under the parser, so they are also inside the 379.</p>
 <h2>How the reports were told apart</h2>
 <ul><li>The intake tag is a guess from the browser. It disagrees with the cause for 38 reports (23 tagged <code>hint</code> are really the parser; 15 tagged <code>parser</code> are really the hint). Do not triage by it.</li><li>The 5 one-day reports were footnoted under the parser in <code>desk-notes.json</code>. A month flip cannot move a date by one day, so they are counted as their own problem here.</li>
@@ -19,6 +19,6 @@
 <h2>Why it was merged as one</h2>
 <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges on subject line alone. Subjects like "Date is wrong" fit all three problems. "Splitting a ticket later is cheaper" holds only if someone splits it; here nobody did for months.</p>
 <h2>Tickets</h2>
-<p>One GitHub issue per problem (#4471: …), each with its report count, in the repo this page ships with.</p>
+<p>Issue #1 (parser, 379), issue #2 (hint, 33, the cause that had no ticket) and issue #3 (one-day move, 5, also counted in the 379), each split from #4471.</p>
 <p class="stamp">desk ref <b>DR-VJA4-R581</b></p>
 </body></html>
