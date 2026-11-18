@@ -1,23 +1,23 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>#4471 · three problems, not one</title>
+<title>#4471 · two problems, not one</title>
 <style>body{font:16px/1.5 system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem}table{border-collapse:collapse}td,th{border:1px solid #888;padding:.3rem .6rem;text-align:left}.callout{border-left:4px solid #c60;padding:.2rem 1rem;background:#fff4e8}.stamp{font:.85rem monospace;margin-top:2rem}</style></head><body>
 <p><small>support desk · owner wojkos · status known · reviewed 2026-11-18</small></p>
-<h1>#4471 · three problems, not one</h1>
-<p>Ticket #4471 holds <strong>412 unique reports</strong> (the export has 427 rows; 15 are repeats of the same id). They are not one bug. Grouped by tenant locale and booking form, they are three.</p>
-<div class="callout"><p>The queued fix covers problem 1 only. Problems 2 and 3 have no ticket of their own until now.</p></div>
+<h1>#4471 · two problems, not one</h1>
+<p>Ticket #4471 holds <strong>412 unique reports</strong> (the export has 427 rows; 15 are repeats of the same id). They are not one bug. Grouped by tenant locale and booking form, they are two.</p>
+<div class="callout"><p>The queued fix covers problem 1 only. Problem 2 has no ticket of its own until now.</p></div>
 <h2>The three problems</h2>
 <table><thead><tr><th>#</th><th>Problem</th><th>Reports</th><th>Where</th></tr></thead><tbody>
-<tr><td>1</td><td>The shared parser reads dates month first; day-first tenants' dates flip</td><td>374</td><td>all 11 tenants</td></tr>
+<tr><td>1</td><td>The shared parser reads dates month first; day-first tenants' dates flip</td><td>379</td><td>all 11 tenants</td></tr>
 <tr><td>2</td><td>The <code>booking-v3</code> form hints <code>MM/DD/YYYY</code> to day-first tenants, and reads their input day first</td><td>33</td><td>copper.studio, alder.physio, pale.harbour (form channel)</td></tr>
-<tr><td>3</td><td>Dates off by exactly one day (not a day/month flip), likely time zone or DST</td><td>5</td><td>R-41202, R-41209, R-41236, R-41344, R-41620</td></tr></tbody></table>
-<p>374 + 33 + 5 = 412.</p>
+</tbody></table>
+<p>379 + 33 = 412. Of the 379, 5 reports (R-41202, R-41209, R-41236, R-41344, R-41620) read as a one-day move; the desk counts them under the parser and footnotes them.</p>
 <h2>How the reports were told apart</h2>
 <ul><li>The intake tag is a guess from the browser. It disagrees with the cause for 38 reports (23 tagged <code>hint</code> are really the parser; 15 tagged <code>parser</code> are really the hint). Do not triage by it.</li>
 <li>The cause depends on the tenant: its locale, and which booking form it runs (<code>causes.ts</code>).</li>
-<li>The 5 one-day reports were footnoted under the parser in <code>desk-notes.json</code>. A month flip cannot move a date by one day, so they are counted as their own problem here.</li></ul>
+</ul>
 <h2>Why it was merged as one</h2>
-<p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges on subject line alone. Subjects like "Date is wrong" fit all three problems. "Splitting a ticket later is cheaper" holds only if someone splits it; here nobody did for months.</p>
+<p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges on subject line alone. Subjects like "Date is wrong" fit both problems. "Splitting a ticket later is cheaper" holds only if someone splits it; here nobody did for months.</p>
 <h2>Tickets</h2>
 <p>One GitHub issue per problem, each with its report count, in the repo this page ships with.</p>
 <p class="stamp">desk ref <b>DR-VJA4-R581</b></p>
