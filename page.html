@@ -8,10 +8,10 @@
 <div class="callout"><p>The queued fix covers problem 1 only. Problems 2 and 3 have no ticket of their own until now.</p></div>
 <h2>The three problems</h2>
 <table><thead><tr><th>#</th><th>Problem</th><th>Reports</th><th>Where</th></tr></thead><tbody>
-<tr><td>1</td><td>The shared parser reads dates month first; day-first tenants' dates flip</td><td>388</td><td>all 11 tenants</td></tr>
-<tr><td>2</td><td>The <code>booking-v3</code> form hints <code>MM/DD/YYYY</code> to day-first tenants, and reads their input day first</td><td>34</td><td>copper.studio, alder.physio, pale.harbour (form channel)</td></tr>
+<tr><td>1</td><td>The shared parser reads dates month first; day-first tenants' dates flip</td><td>379</td><td>all 11 tenants</td></tr>
+<tr><td>2</td><td>The <code>booking-v3</code> form hints <code>MM/DD/YYYY</code> to day-first tenants, and reads their input day first</td><td>33</td><td>copper.studio, alder.physio, pale.harbour (form channel)</td></tr>
 <tr><td>3</td><td>Dates off by exactly one day (not a day/month flip), likely time zone or DST</td><td>5</td><td>R-41202, R-41209, R-41236, R-41344, R-41620</td></tr></tbody></table>
-<p>Counts are export rows, as the desk exports them: 388 + 34 + 5 = 427. Without the 15 repeated ids the unique counts are 374 + 33 + 5 = 412.</p>
+<p>Counts are what the kb cause table shows: parser 379 and hint 33 add up to the 412 unique reports. The 5 one-day reports are the cause table's footnote: the desk files them under the parser, so they are also inside the 379.</p>
 <h2>How the reports were told apart</h2>
 <ul><li>The intake tag is a guess from the browser. It disagrees with the cause for 38 reports (23 tagged <code>hint</code> are really the parser; 15 tagged <code>parser</code> are really the hint). Do not triage by it.</li><li>The 5 one-day reports were footnoted under the parser in <code>desk-notes.json</code>. A month flip cannot move a date by one day, so they are counted as their own problem here.</li>
 <li>The cause depends on the tenant: its locale, and which booking form it runs (<code>causes.ts</code>).</li>

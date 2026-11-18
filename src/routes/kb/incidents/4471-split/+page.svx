@@ -24,11 +24,11 @@ The queued fix covers problem 1 only. Problems 2 and 3 have no ticket of their o
 
 | # | Problem | Reports | Where |
 |---|---------|---------|-------|
-| 1 | The shared parser reads dates month first; day-first tenants' dates flip | 388 | all 11 tenants |
-| 2 | The `booking-v3` form hints `MM/DD/YYYY` to day-first tenants, and reads their input day first | 34 | copper.studio, alder.physio, pale.harbour (form channel) |
+| 1 | The shared parser reads dates month first; day-first tenants' dates flip | 379 | all 11 tenants |
+| 2 | The `booking-v3` form hints `MM/DD/YYYY` to day-first tenants, and reads their input day first | 33 | copper.studio, alder.physio, pale.harbour (form channel) |
 | 3 | Dates off by exactly one day (not a day/month flip), likely time zone or DST | 5 | R-41202, R-41209, R-41236, R-41344, R-41620 |
 
-Counts are export rows, as the desk exports them: 388 + 34 + 5 = 427. Without the 15 repeated ids the unique counts are 374 + 33 + 5 = 412.
+Counts are what the kb cause table shows: parser 379 and hint 33 add up to the 412 unique reports. The 5 one-day reports are the cause table's footnote: the desk files them under the parser, so they are also inside the 379.
 
 ## How the reports were told apart
 
